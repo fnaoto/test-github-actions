@@ -31,7 +31,7 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
       - run: |
-          if [[ ${{ matrix.env }} == ${ENV} ]]
+          if [[ ${{ matrix.env }} == ${ENV} ]]; then
             echo ${{ matrix.test }}
             ruby -v
           fi
