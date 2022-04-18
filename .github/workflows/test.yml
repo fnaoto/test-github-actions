@@ -10,6 +10,7 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
+    if: ${{ github.event.inputs.env == matrix.env }}
     strategy:
       matrix:
         include:
@@ -31,7 +32,6 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
       - run: |
-          if [[ ${{ matrix.env }} == ${ENV} ]]; then
-            echo ${{ matrix.test }}
-            ruby -v
-          fi
+          echo ${{ matrix.test }}
+          ruby -v
+
