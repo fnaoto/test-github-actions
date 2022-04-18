@@ -10,7 +10,6 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    if: ${{ github.event.inputs.env == matrix.env }}
     strategy:
       matrix:
         include:
@@ -26,6 +25,7 @@ jobs:
       GITHUB_REF_NAME:  ${{ github.ref_name }}
       ENV: ${{ github.event.inputs.env }}
     steps:
+      - if: ${{ github.event.inputs.env == matrix.env }}
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
         with:
