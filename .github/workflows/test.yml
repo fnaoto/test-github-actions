@@ -25,13 +25,15 @@ jobs:
       GITHUB_REF_NAME:  ${{ github.ref_name }}
       ENV: ${{ github.event.inputs.env }}
     steps:
-      - if: ${{ github.event.inputs.env == matrix.env }}
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
+        if: ${{ github.event.inputs.env == matrix.env }}
         with:
           ruby-version: 2.6
           bundler-cache: true
-      - run: |
+      - name: echo
+        if: ${{ github.event.inputs.env == matrix.env }}
+        run: |
           echo ${{ matrix.test }}
           ruby -v
 
