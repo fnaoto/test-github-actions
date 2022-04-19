@@ -6,6 +6,7 @@ on:
       env:
         description: "input"
         required: true
+        default: test
       sha:
         required: false
   push:
