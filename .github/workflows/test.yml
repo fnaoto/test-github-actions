@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    if: github.event.inputs.env == matrix.env
+    if: contains('A B', github.event.inputs.env)
     runs-on: ubuntu-latest
     strategy:
       matrix:
