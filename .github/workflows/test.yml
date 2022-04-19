@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    if: github.event.inputs.env == "${MATRIX_ENV}" || github.event.inputs.env == 'B'
+    if: github.event.inputs.env == matrix.env
     runs-on: ubuntu-latest
     strategy:
       matrix:
