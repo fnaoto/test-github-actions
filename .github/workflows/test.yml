@@ -8,6 +8,9 @@ on:
         required: true
       sha:
         required: false
+  push:
+    branches:
+      - master
 
 jobs:
   test:
