@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    if: github.event.inputs.env == 'A' || github.event.inputs.env == 'B'
+    if: github.event.inputs.env == "${MATRIX_ENV}" || github.event.inputs.env == 'B'
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -21,7 +21,8 @@ jobs:
     env:
       GITHUB_SHA: ${{ github.sha }}
       GITHUB_REF_NAME:  ${{ github.ref_name }}
-      ENV: ${{ github.event.inputs.env }}
+      MATRIX_ENV: ${{ matrix.env }}
+      INPUTS_ENV: ${{ github.event.inputs.env }}
     steps:
       - uses: actions/checkout@v2
       - uses: ruby/setup-ruby@v1
@@ -30,5 +31,5 @@ jobs:
           bundler-cache: true
       - name: echo
         run: |
-          echo ${{ matrix.test }}
+          echo ${INPUTS_ENV}
           ruby -v
