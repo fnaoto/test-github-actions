@@ -10,6 +10,7 @@ on:
 jobs:
   test:
     if: github.event.inputs.env == 'A'
+    if: github.event.inputs.env == 'B'
     runs-on: ubuntu-latest
     strategy:
       matrix:
