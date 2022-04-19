@@ -9,15 +9,13 @@ on:
 
 jobs:
   test:
-    if: contains('A C', github.event.inputs.env)
+    if: contains('A', github.event.inputs.env)
     runs-on: ubuntu-latest
     strategy:
       matrix:
         include:
           - env: A
             test: B
-          - env: C
-            test: D
     env:
       GITHUB_SHA: ${{ github.sha }}
       GITHUB_REF_NAME:  ${{ github.ref_name }}
@@ -33,3 +31,4 @@ jobs:
         run: |
           echo ${INPUTS_ENV}
           ruby -v
+          bundle install
