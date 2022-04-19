@@ -7,7 +7,7 @@ on:
         description: "input"
         required: true
       sha:
-        default: ${{ github.sha }}
+        default: ""
 
 jobs:
   test:
@@ -23,6 +23,7 @@ jobs:
       GITHUB_REF_NAME:  ${{ github.ref_name }}
       MATRIX_ENV: ${{ matrix.env }}
       INPUTS_ENV: ${{ github.event.inputs.env }}
+      SHA: ${{ github.events.inputs.sha }}
     steps:
       - uses: actions/checkout@v2
       - run: aws --version
@@ -35,6 +36,6 @@ jobs:
       - name: echo
         run: |
           echo ${INPUTS_ENV} ${MATRIX_ENV}
-          echo ${{ github.events.inputs.sha }}
+          echo ${SHA:-sha}
           ruby -v
           bundler -v
