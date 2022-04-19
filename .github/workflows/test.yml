@@ -6,6 +6,8 @@ on:
       env:
         description: "input"
         required: true
+      sha:
+        default: ${{ github.sha }}
 
 jobs:
   test:
@@ -33,5 +35,6 @@ jobs:
       - name: echo
         run: |
           echo ${INPUTS_ENV} ${MATRIX_ENV}
+          echo ${{ github.events.inputs.sha }}
           ruby -v
           bundler -v
