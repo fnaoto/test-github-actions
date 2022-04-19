@@ -23,6 +23,7 @@ jobs:
       INPUTS_ENV: ${{ github.event.inputs.env }}
     steps:
       - uses: actions/checkout@v2
+      - uses: ./.github/actions/awscli-v2
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.6
