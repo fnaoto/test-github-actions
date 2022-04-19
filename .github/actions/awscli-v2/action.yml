@@ -1,0 +1,17 @@
+name: 'awscliのインストールを行う'
+description: 'ditto'
+author: '@fnaoto'
+inputs:
+  working-directory:
+    default: .
+runs:
+  using: 'composite'
+  steps:
+    - name: Install aws cli
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      run: |
+        apt-get update -y && apt-get install -y curl zip
+        curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+        unzip awscliv2.zip && ./aws/install
+        aws --version

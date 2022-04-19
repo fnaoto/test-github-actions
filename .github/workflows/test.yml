@@ -29,6 +29,6 @@ jobs:
           bundler-cache: true
       - name: echo
         run: |
-          echo ${INPUTS_ENV}
+          echo ${INPUTS_ENV} ${MATRIX_ENV}
           ruby -v
           bundler -v
