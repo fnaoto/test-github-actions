@@ -10,7 +10,7 @@ on:
         required: false
   push:
     branches:
-      - master
+      - main
 
 jobs:
   test:
