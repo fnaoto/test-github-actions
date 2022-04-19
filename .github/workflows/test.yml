@@ -31,4 +31,4 @@ jobs:
         run: |
           echo ${INPUTS_ENV}
           ruby -v
-          bundle install
+          bundler -v
