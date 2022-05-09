@@ -41,9 +41,10 @@ jobs:
           ruby-version: 2.6
           bundler-cache: true
       - name: test
+        env:
+          GITHUB_CONTEXT: ${{ toJSON(github) }}
         run: |
           echo "$GITHUB_CONTEXT"
-          echo ${{ github.event.workflow_run }}
           env
           ruby -v
           bundler -v
