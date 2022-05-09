@@ -42,6 +42,8 @@ jobs:
           bundler-cache: true
       - name: test
         run: |
+          echo "$GITHUB_CONTEXT"
+          echo ${{ github.event.workflow_run }}
           env
           ruby -v
           bundler -v
