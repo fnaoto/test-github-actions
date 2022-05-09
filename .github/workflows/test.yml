@@ -15,17 +15,11 @@ on:
 
 jobs:
   test:
-    if: contains('A', github.event.inputs.env)
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        include:
-          - env: A
-            test: B
     env:
       GITHUB_SHA: ${{ github.sha }}
       GITHUB_REF_NAME:  ${{ github.ref_name }}
-      MATRIX_ENV: ${{ matrix.env }}
+      GITHUB_REF_TYPE_IS_BRANCH: ${{ github.ref_type == 'branch' }}
       INPUTS_ENV: ${{ github.event.inputs.env || 'test' }}
       SHA: ${{ github.events.inputs.sha || github.sha }}
     steps:
@@ -36,9 +30,8 @@ jobs:
         with:
           ruby-version: 2.6
           bundler-cache: true
-      - name: echo
+      - name: test
         run: |
-          echo ${INPUTS_ENV} ${MATRIX_ENV}
-          echo ${SHA:-sha}
+          env
           ruby -v
           bundler -v
