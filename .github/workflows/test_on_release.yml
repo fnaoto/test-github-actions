@@ -1,4 +1,4 @@
-name: Test on tag create
+name: Test on release published
 
 on:
   release:
@@ -9,4 +9,4 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo 'Test on tag'
+      - run: echo 'Test on release'
