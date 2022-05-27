@@ -1,0 +1,12 @@
+name: Test on tag create
+
+on:
+  push:
+    tags:
+      - '*'
+  workflow_dispatch:
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo 'Test on tag'
