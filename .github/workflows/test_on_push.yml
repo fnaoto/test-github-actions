@@ -13,6 +13,6 @@ jobs:
       - run: echo start
       - uses: release-drafter/release-drafter@v5
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.token }}
     outputs:
       version: 'test version'
